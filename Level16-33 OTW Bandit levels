@@ -1,0 +1,10 @@
+# OvertheWire-Bandit-Levels
+Tips for OTW Bandit challenges
+Before reading the solution i recommend you to check the man of nmap and ncat
+
+-------------------------LEVEL16--------------------------
+#First you must use nmap to scan the localhost ports from 31000 to 32000
+nmap -A localhost -p 31000-32000
+
+#Then use the command ncat to submit the current password to get the new one
+ncat --ssl localhost "PORT"
