@@ -8,3 +8,12 @@ nmap -A localhost -p 31000-32000
 
 #Then use the command ncat to submit the current password to get the new one
 ncat --ssl localhost "PORT"
+
+#Finally connect to bandit17 from your own machine
+ssh -i "KEY WITH THE PASSWORD" bandit17@bandit.labs.overthewire.org -p 2220
+
+-------------------------LEVEL 17-------------------------
+#For this level you have to use the command "diff"
+diff passwords.new passwords.old
+#The output "<" belongs to the first input file and ">" to the last one (you have to choose the password from passwords.new)
+
