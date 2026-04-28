@@ -17,3 +17,14 @@ ssh -i "KEY WITH THE PASSWORD" bandit17@bandit.labs.overthewire.org -p 2220
 diff passwords.new passwords.old
 #The output "<" belongs to the first input file and ">" to the last one (you have to choose the password from passwords.new)
 
+-------------------------LEVEL 18-------------------------
+#For this level you have to use ssh but with cat at the end
+ssh bandit17@bandit.labs.overthewire.org -p 2220 cat "file"
+
+-------------------------LEVEL 19-------------------------
+#Now we will cover the setuid. It means about the root privileges of programs and exploit vulnerabilities with that one.
+#An attacker will try to find programs with setuid active to gain root privileges.
+./bandit20-do cat /etc/bandit_pass/bandit20
+#With the command above you can read the file "bandit20" (you did not have permission to do it) with the privileges of bandit20-do
+
+
