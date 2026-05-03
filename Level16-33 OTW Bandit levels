@@ -27,4 +27,14 @@ ssh bandit17@bandit.labs.overthewire.org -p 2220 cat "file"
 ./bandit20-do cat /etc/bandit_pass/bandit20
 #With the command above you can read the file "bandit20" (you did not have permission to do it) with the privileges of bandit20-do.
 
+-------------------------LEVEL 20-------------------------
+#For this level you must use nc with the arguments for listen (-l) and port (-p)
+#Then you will need 2 terminals connected to the current level. 
 
+#First terminal
+./"BINARY_FILE" PORT
+
+#Second terminal
+nc -l -p PORT
+
+#Finally print the level's 20 password into the second terminal and ENTER
