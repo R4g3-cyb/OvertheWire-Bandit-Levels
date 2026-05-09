@@ -38,3 +38,24 @@ ssh bandit17@bandit.labs.overthewire.org -p 2220 cat "file"
 nc -l -p PORT
 
 #Finally print the level's 20 password into the second terminal and ENTER
+
+-------------------------LEVEL 21-------------------------
+#In this level you must know what "cron" is. After you learn that, you can continue:
+cd /etc/cron.d
+#Then when you are in the cron directory make a cat to the cronjob of the next level
+cat cronjob_bandit22
+#Now make a cat to the /usr/bin/... .sh 
+#The cat's output gives you the next level's password hash. You must do a cat again to the directory (tmp/"HASH")
+cat /tmp/"HASH"
+#The output is the password
+
+-------------------------LEVEL 22-------------------------
+#The first 3 steps are the same as LEVEL 21
+cd /etc/cron.d
+cat cronjob_bandit23
+cat /usr/bin/... .sh
+#Now you have to make an echo in the terminal changing the variable ($) to bandit23
+echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+#The output is the password 
+
+
